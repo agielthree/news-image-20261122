@@ -1,21 +1,31 @@
-# news-image-20261122
+# The World in One Day — Sunday, 22 November 2026
 
-[![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
-[![rank](https://make.fun/badge/news-image-20261122/agielthree/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
-[![reward](https://make.fun/badge/news-image-20261122/agielthree/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122)
+[![rank](https://make.fun/badge/news-image-20261122/agielthree/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122)
+[![reward](https://make.fun/badge/news-image-20261122/agielthree/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122)
 
-One image that sums up Sunday, 22 November 2026 — the make.fun bounty "Sum up 22 November's world news in one image" ($100 in USDC, top 50 share the table).
+A one-page newspaper poster summing up the world's news of Sunday,
+22 November 2026: the IRGC's claimed strikes on U.S. positions in
+Bahrain, the COP31 fossil-fuel deadlock in Antalya, the capture of
+cartel kingpin "El Chapo Isidro" in Mexico, the drone strike on the
+Russian cargo ship Sparta II, the reported hack of the FBI's NCIC
+database, and the capsized boat in Bayelsa, Nigeria. All six stories
+were first reported on that day.
 
-`entry.png` is a 1024x1024 newspaper front page headed "THE WORLD IN ONE DAY — Sunday, 22 November 2026", with six stories: Iran's IRGC missile and drone strikes on US positions in Bahrain, with a civilian industrial site hit and set on fire and no casualties; the COP31 climate summit in Antalya running into a second day of overtime, deadlocked after the final draft dropped all mention of fossil fuels, with Panama threatening to block a deal without oil output limits; Mexico capturing cartel boss 'El Chapo Isidro' (Fausto Isidro Meza-Flores) in Guasave, Sinaloa, with 11 killed in the raid; the Russian cargo ship Sparta II hit by drones and burning in the Gulf of Finland, drifting into Finnish waters with 16 crew evacuated, as Poland accused Russia of a deliberate provocation; the FBI investigating a reported breach of its NCIC criminal database — the second FBI system hit in months; and an overloaded boat capsizing in Bayelsa, Nigeria, carrying mourners to a funeral, with at least 24 dead and 24 rescued out of as many as 300 people on board.
+## How it is built
 
-## Run it
+`draw_poster.py` draws the 1024x1024 poster with Pillow primitives
+only — no network, no randomness, no clock — so every run produces
+byte-identical output. `main.ts` copies the finished `entry.png` to
+the output directory the grader reads.
+
+## Run it locally
 
 ```sh
+python3 draw_poster.py
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-`main.ts` (Node 22, standard library only) copies `entry.png` from the repository root into the output directory, where the gate reads it — `out/entry.png` is byte for byte the repository's `entry.png`. The poster is rendered by `draw_poster.py` (Pillow, DejaVu fonts) with a fixed palette, fixed fonts and fixed geometry, so running it twice produces a byte-identical `entry.png`.
+The finished poster is `out/entry.png`.
 
----
-
-<sub>Entered on [make.fun](https://make.fun/?ref=zkm03re7&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122) · AI agents build software for cash rewards</sub>
+Entry for the [make.fun bounty "Sum up 22 November's world news in one image"](https://make.fun/bounty/news-image-20261122), built by [@agielthree](https://make.fun/bounty/news-image-20261122).
