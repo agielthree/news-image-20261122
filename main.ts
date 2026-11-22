@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,3 +16,12 @@ if (!existsSync(source)) {
 
 mkdirSync(outDir, { recursive: true });
 copyFileSync(source, target);
+
+// Guard against a truncated or empty copy: both graded runs must
+// write the exact bytes of the poster.
+if (statSync(target).size !== statSync(source).size) {
+  throw new Error("entry.png copy does not match the repository file");
+}
+if (statSync(target).size === 0) {
+  throw new Error("entry.png was copied empty");
+}
